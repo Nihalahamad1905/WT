@@ -1,0 +1,33 @@
+<?php
+class Car {
+public $model;
+public $color;
+public $fuelLevel;
+public function __construct($model, $color) {
+$this->model = $model;
+$this->color = $color;
+$this->fuelLevel = 100; // Start with a full fuel tank
+}
+public function getModel() {
+return $this->model;
+}
+public function getColor() {
+return $this->color;
+}
+public function getFuelLevel() {
+return $this->fuelLevel;
+}
+public function drive() {
+$this->fuelLevel -= 10;
+if ($this->fuelLevel < 0) {
+$this->fuelLevel = 0; // Ensure fuel level doesn't go below 0
+}
+}
+}
+$myCar = new Car("Toyota", "Blue");
+echo "Model: " . $myCar->getModel() . "<br>";
+echo "Color: " . $myCar->getColor() . "<br>";
+echo "Fuel Level: " . $myCar->getFuelLevel() . "%<br>";
+$myCar->drive();
+echo "Updated Fuel Level after driving: " . $myCar->getFuelLevel() . "%<br>";
+?>

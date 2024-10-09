@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+</head>
+<body>
+<div class="container">
+<h2>Registration Form</h2>
+<form action="/submit_registration" method="POST">
+<div class="form-group">
+<label for="firstname">First Name:</label>
+<input type="text" id="firstname" name="firstname" required>
+</div>
+<div class="form-group">
+<label for="lastname">Last Name:</label>
+<input type="text" id="lastname" name="lastname" required>
+</div>
+<div class="form-group">
+<label for="rollno">Roll Number:</label>
+<input type="text" id="rollno" name="rollno" required>
+</div>
+<div class="form-group">
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" required>
+</div>
+<div class="form-group">
+<label for="department">Department:</label>
+<select id="department" name="department" required>
+<option value="">Select Department</option>
+<option value="cs">Computer Science</option>
+<option value="it">Information Technology</option>
+<option value="mech">Mechanical Engineering</option>
+<option value="civil">Civil Engineering</option>
+<option value="electrical">Electrical Engineering</option>
+</select>
+</div>
+<div class="form-group">
+<label>Gender:</label>
+Title Create HTML pages for websites like Registration form.
+
+<div class="radio-group">
+<label><input type="radio" name="gender" value="male" required> Male</label>
+<label><input type="radio" name="gender" value="female"> Female</label>
+<label><input type="radio" name="gender" value="other"> Other</label>
+</div>
+</div>
+<div class="form-group">
+<label for="password">Password:</label>
+<input type="password" id="password" name="password" required>
+</div>
+<div class="form-group">
+<label for="confirmpassword">Confirm Password:</label>
+<input type="password" id="confirmpassword" name="confirmpassword" required>
+</div>
+<input type="submit" value="Register">
+</form>
+</div>
+</body>
+</html>

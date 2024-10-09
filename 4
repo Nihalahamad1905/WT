@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Read and Write HTML with jQuery</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+.container {
+background-color: #fff;
+border-radius: 15px;
+padding: 30px;
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+text-align: center;
+width: 350px;
+}
+button {
+background-color: #6C63FF;
+color: #fff;
+border: none;
+padding: 12px 20px;
+margin: 10px 0;
+border-radius: 25px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+</style>
+<script>
+$(document).ready(function() {
+$('#btn1').click(function() {
+var content = $('#content').html();
+alert('Current HTML content: ' + content);
+});
+$('#btn2').click(function() {
+$('#content').html('<p>Showing the new HTML content!</p>');
+});
+});
+</script>
+Title Write a program to read and write html contents using Jquery
+
+Fig.Output Fig. Write Content
+
+Fig. Read Content
+
+</head>
+<body>
+<div class="container">
+<div id="content">
+<h1>Original HTML Content</h1>
+<p>Welcome to jQuery</p>
+</div>
+<button id="btn1">Read HTML Content</button>
+<button id="btn2">Write New HTML Content</button>
+</div>
+</body>
+</html>

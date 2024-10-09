@@ -1,0 +1,52 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+const form = document.getElementById('registrationForm');
+form.addEventListener('submit', function (event) {
+
+let valid = true;
+const fullName = document.getElementById('fullname').value.trim();
+const department = document.getElementById('department').value;
+const rollNo = document.getElementById('rollno').value.trim();
+const gender= document.querySelector('input[name="gender"]:checked');
+const email = document.getElementById('email').value.trim();
+
+if (!isValidName(fullName)) {
+alert('Full name should only contain alphabetic characters.');
+valid = false;
+}
+if (department === "") {
+alert('Please select a department.');
+valid = false;
+}
+if (!isValidRollNumber(rollNo)) {
+alert('Roll No should only contain numeric characters.');
+valid = false;
+}
+if (!gender) {
+alert('Please select a gender.');
+valid = false;
+}
+if (!validateEmail(email)) {
+alert('Please enter a valid email address.');
+valid = false;
+}
+
+Title Demonstration of javascript for form Validation.
+
+Fig. Roll No Validation Fig. Full Name Validation
+if (!valid) {
+event.preventDefault();
+}
+});
+function isValidName(name) {
+return /^[A-Za-z\s]+$/.test(name);
+}
+function isValidRollNumber(rollNo) {
+return /^\d+$/.test(rollNo);
+}
+function validateEmail(email) {
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+return emailRegex.test(email);
+}
+});
+</script>

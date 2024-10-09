@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>File Upload Form</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-
+alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+<div class="row justify-content-center">
+<div class="col-md-6">
+<div class="card">
+<div class="card-header bg-primary text-white">
+<h4 class="text-center mb-0">Upload a File</h4>
+</div>
+<div class="card-body">
+<form action="upload.php" method="POST" enctype="multipart/form-data">
+<div class="mb-3">
+<label for="file" class="form-label">Choose a file:</label>
+<input type="file" class="form-control" name="file" id="file" required>
+</div>
+<div class="d-grid">
+<button type="submit" class="btn btn-success">Upload</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-
+alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+Title Upload various types of file from client side to server with validation
+
+PHP CODE
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_FILES["file"]) && $_FILES["file"]["error"] == 0) {
+$fileName = $_FILES["file"]["name"];
+$fileType = $_FILES["file"]["type"];
+$fileSize = $_FILES["file"]["size"];
+$allowedTypes = ['image/jpeg', 'image/png', 'image/gif',
+'application/pdf'];
+if (in_array($fileType, $allowedTypes)) {
+if ($fileSize <= 2 * 1024 * 1024) {
+$uploadDir = "uploads/";
+if (!is_dir($uploadDir)) {
+mkdir($uploadDir, 0755, true);
+}
+$filePath = $uploadDir . basename($fileName);
+if (move_uploaded_file($_FILES["file"]["tmp_name"], $filePath)) {
+
+echo "File uploaded successfully: " .
+htmlspecialchars($fileName);
+
+} else {
+echo "Error moving the uploaded file.";
+}
+} else {
+echo "File is too large. Maximum size is 2MB.";
+}
+} else {
+echo "Invalid file type. Only JPEG, PNG, GIF, and PDF files are
+allowed.";
+}
+} else {
+echo "Error uploading the file. Error code: " . $_FILES["file"]["error"];
+}
+} else {
+echo "Invalid request method.";
+}
+?>

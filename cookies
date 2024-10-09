@@ -1,0 +1,62 @@
+Set a Cookie
+
+<?php
+setcookie("username", "Nihal Shaikh", time() + 3600, "/");
+echo "Cookie has been set.";
+?>
+
+Access the Cookie
+
+<?php
+if (isset($_COOKIE["username"])) {
+echo "Welcome back, " . $_COOKIE["username"] . "!";
+} else {
+echo "No cookie found. Please log in.";
+}
+?>
+
+Delete the Cookie
+
+<?php
+setcookie("username", "", time() - 3600, "/");
+echo "Cookie has been deleted.";
+?>
+
+
+
+
+
+
+
+
+
+
+  Start a Session and Store Data
+
+<?php
+session_start();
+$_SESSION["username"] = "Nihal Shaikh";
+$_SESSION["email"] = "Nihalshaikh@gmail.com";
+echo "Session variables are set.";
+?>
+
+Access Session Data
+
+<?php
+session_start();
+if (isset($_SESSION["username"])) {
+echo "Welcome back, " . $_SESSION["username"] . "!";
+echo "<br>Your email is: " . $_SESSION["email"];
+} else {
+echo "No session data found. Please log in.";
+}
+?>
+
+Destroy the Session
+
+<?php
+session_start();
+session_unset();
+session_destroy();
+echo "Session destroyed. You have been logged out.";
+?>

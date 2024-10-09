@@ -1,0 +1,108 @@
+<?php
+abstract class Media {
+protected $title;
+protected $author;
+const MEDIA_TYPE = 'General';
+public function __construct($title, $author) {
+$this->title = $title;
+$this->author = $author;
+}
+abstract public function getDetails();
+public static function getMediaType() {
+return static::MEDIA_TYPE;
+}
+}
+interface Borrowable {
+public function borrow($borrower);
+}
+class Book extends Media implements Borrowable {
+private $isbn;
+public static $totalBooks = 0;
+const MEDIA_TYPE = 'Book';
+public function __construct($title, $author, $isbn) {
+parent::__construct($title, $author);
+$this->isbn = $isbn;
+self::$totalBooks++;
+}
+public function getDetails() {
+return [
+"Title" => $this->title,
+"Author" => $this->author,
+"ISBN" => $this->isbn,
+"Type" => self::getMediaType()
+];
+}
+public function borrow($borrower) {
+return "{$borrower} has borrowed the book: {$this->title}";
+Title Experiment Based on advanced OOP concepts in PHP
+
+}
+}
+class Magazine extends Media implements Borrowable {
+private $issueNumber;
+public static $totalMagazines = 0;
+const MEDIA_TYPE = 'Magazine';
+public function __construct($title, $author, $issueNumber) {
+parent::__construct($title, $author);
+$this->issueNumber = $issueNumber;
+self::$totalMagazines++;
+}
+public function getDetails() {
+return [
+"Title" => $this->title,
+"Author" => $this->author,
+"Issue" => $this->issueNumber,
+"Type" => self::getMediaType()
+];
+}
+public function borrow($borrower) {
+return "{$borrower} has borrowed the magazine: {$this->title}";
+}
+}
+$libraryItems = [
+new Book("1984", "George Orwell", "123456789"),
+new Magazine("National Geographic", "Various", "2023-09")
+];
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library Items</title>
+</head>
+<body>
+<h2 style="text-align: center;">Library Items</h2>
+<table>
+<tr>
+<th>Title</th>
+<th>Author</th>
+<th>Details</th>
+
+<th>Borrow</th>
+</tr>
+<?php
+foreach ($libraryItems as $item) {
+$details = $item->getDetails();
+$borrowMessage = $item->borrow("John Doe");
+echo "<tr>";
+echo "<td>{$details['Title']}</td>";
+echo "<td>{$details['Author']}</td>";
+echo "<td>";
+foreach ($details as $key => $value) {
+if ($key != 'Title' && $key != 'Author') {
+echo "{$key}: {$value}<br>";
+}
+}
+echo "</td>";
+echo "<td>{$borrowMessage}</td>";
+echo "</tr>";
+}
+?>
+</table>
+<h3 style="text-align: center;">
+Total Books: <?php echo Book::$totalBooks; ?> |
+Total Magazines: <?php echo Magazine::$totalMagazines; ?>
+</h3>
+</body>
+</html>

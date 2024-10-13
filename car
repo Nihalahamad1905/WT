@@ -1,33 +1,66 @@
 <?php
 class Car {
-public $model;
-public $color;
-public $fuelLevel;
-public function __construct($model, $color) {
-$this->model = $model;
-$this->color = $color;
-$this->fuelLevel = 100; // Start with a full fuel tank
+    public $model;
+    public $color;
+    public $fuelLevel;
+
+    public function __construct($model, $color) {
+        $this->model = $model;
+        $this->color = $color;
+        $this->fuelLevel = 100; 
+    }
+
+    public function getModel() {
+        return $this->model;
+    }
+
+    public function getColor() {
+        return $this->color;
+    }
+
+    public function getFuelLevel() {
+        return $this->fuelLevel;
+    }
+
+    public function drive() {
+        $this->fuelLevel -= 10;
+        if ($this->fuelLevel < 0) {
+            $this->fuelLevel = 0; 
+        }
+    }
 }
-public function getModel() {
-return $this->model;
-}
-public function getColor() {
-return $this->color;
-}
-public function getFuelLevel() {
-return $this->fuelLevel;
-}
-public function drive() {
-$this->fuelLevel -= 10;
-if ($this->fuelLevel < 0) {
-$this->fuelLevel = 0; // Ensure fuel level doesn't go below 0
-}
-}
-}
+
 $myCar = new Car("Toyota", "Blue");
-echo "Model: " . $myCar->getModel() . "<br>";
-echo "Color: " . $myCar->getColor() . "<br>";
-echo "Fuel Level: " . $myCar->getFuelLevel() . "%<br>";
+
+// Output the car details in a table
+echo "<table border='1' style='width: 50%; margin: 20px auto; text-align: left;'>";
+echo "<tr>";
+echo "<th>Attribute</th>";
+echo "<th>Value</th>";
+echo "</tr>";
+
+echo "<tr>";
+echo "<td>Model</td>";
+echo "<td>" . $myCar->getModel() . "</td>";
+echo "</tr>";
+
+echo "<tr>";
+echo "<td>Color</td>";
+echo "<td>" . $myCar->getColor() . "</td>";
+echo "</tr>";
+
+echo "<tr>";
+echo "<td>Fuel Level</td>";
+echo "<td>" . $myCar->getFuelLevel() . "%</td>";
+echo "</tr>";
+
+// Simulate driving the car
 $myCar->drive();
-echo "Updated Fuel Level after driving: " . $myCar->getFuelLevel() . "%<br>";
+
+echo "<tr>";
+echo "<td>Updated Fuel Level after driving</td>";
+echo "<td>" . $myCar->getFuelLevel() . "%</td>";
+echo "</tr>";
+
+echo "</table>";
 ?>

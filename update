@@ -18,7 +18,7 @@ alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <div class="card-body bg-light">
 
-<form action="update_user_form.php" method="POST">
+<form action="insert.php" method="POST">
 <input type="hidden" name="id" value="1">
 
 <div class="mb-3">
@@ -50,29 +50,26 @@ primary">Update User</button>
 alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-Title Update user data in MySQL database using PHP
 
-Fig. Update User Information (HTML)
-
-PHP CODE
+<!-------------PHP------------------->
 <?php
 $host = 'localhost';
 $username = 'root';
 $password = '';
-$dbname = 'exp14';
+$dbname = 'exp13';
 $conn = mysqli_connect($host, $username, $password, $dbname);
 if (!$conn) {
 die("Connection failed: " . mysqli_connect_error());
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-$id = $_POST['id']; // Get user ID from hidden input
-$name = $_POST['name']; // Get name from form
-$email = $_POST['email']; // Get email from form
-$sql = "UPDATE userdetails SET name = '$name', email = '$email' WHERE id = $id";
+$id = $_POST['id']; 
+$name = $_POST['name']; 
+$email = $_POST['email']; 
+$sql = "UPDATE stu_info2 SET name = '$name', email = '$email' WHERE id = $id";
 if (mysqli_query($conn, $sql)) {
-header("Location: update_user_form.php?status=success");
+header("Location: test.php?status=success");
 } else {
-header("Location: update_user_form.php?status=error");
+header("Location: test.php?status=error");
 }
 }
 mysqli_close($conn);

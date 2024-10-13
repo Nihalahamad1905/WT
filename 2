@@ -5,103 +5,133 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Registration</title>
 <style>
-body {
-background-image: url('bgimg.jpg');
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-}
-.form-login {
-max-width: 500px;
-margin: 30px auto 0;
-background: #f8f8f8;
-border-radius: 5px;
-}
-.form-login h2.form-login-heading {
-margin: 0;
-padding: 25px 20px;
-text-align: center;
-background: #2c2c2c;
-border-radius: 5px 5px 0 0;
-color: #fff;
-font-size: 20px;
-text-transform: uppercase;
-font-weight: 300;
-}
-.login-wrap {
-padding: 20px;
-}
-.form-outline select {
-margin-bottom: 10px;
-}
-.radio-group {
-display: flex;
-justify-content: space-between;
-}
-</style>
-<!-- CSS -->
-Title Create Design web pages using CSS.
+    body {
+        background-image: url('bgimg.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+    }
 
-<link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css integrity="sha384-
-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    .form-login {
+        max-width: 500px;
+        margin: 60px auto;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-login h2.form-login-heading {
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+        background: #343a40;
+        border-radius: 8px 8px 0 0;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 400;
+    }
+
+    .login-wrap {
+        padding: 20px 30px;
+    }
+
+    .login-wrap label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-outline select,
+    .form-outline input {
+        margin-bottom: 15px;
+    }
+
+    .radio-group {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    .radio-group .custom-radio {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    .custom-radio:last-child {
+        margin-right: 0;
+    }
+
+    .btn-theme {
+        background-color: #28a745;
+        border-color: #28a745;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-theme:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+</style>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
 <div id="login-page">
-<div class="container">
-<form class="form-login" method="post">
-<h2 class="form-login-heading">Student Registration Form</h2>
-<div class="login-wrap">
-<!-- Full Name -->
-<label for="fullname">Full Name:</label>
-<input type="text" class="form-control" id="fullname" placeholder="Last_Name
-First_Name Middle_Name" name="fullname" required="required" autofocus><br>
-<!-- Email -->
-<label for="email">Email:</label>
-<input type="email" class="form-control" id="email" placeholder="Email"
-name="email" required="required"><br>
-<!-- Roll No -->
-<label for="rollno">Roll No:</label>
-<input type="text" class="form-control" id="rollno" placeholder="Roll No"
-name="rollno" required="required"><br>
-<!-- Password -->
-<label for="password">Password:</label>
-<input type="password" class="form-control" id="password"
-placeholder="Password" name="password" required="required"><br>
-<!-- Department Dropdown -->
-<label for="department">Department:</label>
-<div data-mdb-input-init class="form-outline">
-<select id="department" name="role" class="form-control input_box">
-<option value="">Please Select Department</option>
-<option value="cs">Computer Science</option>
-<option value="it">Information Technology</option>
-<option value="mech">Mechanical Engineering</option>
-</select>
-</div><br>
-<!-- Gender Radio Buttons -->
-<label for="gender">Gender:</label>
-<div class="form-group radio-group">
-<div class="custom-radio">
-<input type="radio" id="male" name="gender" value="male" required>
-<label class="form-check-label" for="male">Male</label>
-</div>
-<div class="custom-radio">
-<input type="radio" id="female" name="gender" value="female">
-<label class="form-check-label" for="female">Female</label>
-</div>
-<div class="custom-radio">
-<input type="radio" id="other" name="gender" value="other">
+    <div class="container">
+        <form class="form-login" method="post">
+            <h2 class="form-login-heading">Student Registration Form</h2>
+            <div class="login-wrap">
+                <!-- Full Name -->
+                <label for="fullname">Full Name:</label>
+                <input type="text" class="form-control" id="fullname" placeholder="Last_Name First_Name Middle_Name" name="fullname" required autofocus>
 
-<label class="form-check-label" for="other">Other</label>
-</div>
-</div>
-<!-- Register Button -->
-<button class="btn btn-theme btn btn-success btn-block" type="submit"
-name="submit" id="submit">Register</button>
-<hr>
-</div>
-</form>
-</div>
+                <!-- Email -->
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
+
+                <!-- Roll No -->
+                <label for="rollno">Roll No:</label>
+                <input type="text" class="form-control" id="rollno" placeholder="Roll No" name="rollno" required>
+
+                <!-- Password -->
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+
+                <!-- Department Dropdown -->
+                <label for="department">Department:</label>
+                <div class="form-outline">
+                    <select id="department" name="department" class="form-control">
+                        <option value="">Please Select Department</option>
+                        <option value="cs">Computer Science</option>
+                        <option value="it">Information Technology</option>
+                        <option value="mech">Mechanical Engineering</option>
+                    </select>
+                </div>
+
+                <!-- Gender Radio Buttons -->
+                <label for="gender">Gender:</label>
+                <div class="form-group radio-group">
+                    <div class="custom-radio">
+                        <input type="radio" id="male" name="gender" value="male" required>
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="custom-radio">
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                    <div class="custom-radio">
+                        <input type="radio" id="other" name="gender" value="other">
+                        <label class="form-check-label" for="other">Other</label>
+                    </div>
+                </div>
+
+                <!-- Register Button -->
+                <button class="btn btn-theme btn-block" type="submit" name="submit" id="submit">Register</button>
+                <hr>
+            </div>
+        </form>
+    </div>
 </div>
 </body>
 </html>
